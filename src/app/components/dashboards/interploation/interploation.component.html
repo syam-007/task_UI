@@ -1,0 +1,97 @@
+<app-page-header [title]="'Survey_calculation'" [activeTitle]="'interpolation'" [title1]="'Tables'"></app-page-header> 
+<div class="grid grid-cols-12 gap-6">
+    <div class="xl:col-span-3 lg:col-span-12  col-span-12">
+        <div class="box">
+            <div class="box-body !p-0">
+                <div class="p-6 pb-2">
+                    <p class="text-[.9375rem] font-semibold">Tasks Statistics <span class="text-muted font-normal"></span></p>
+                    <div id="task-list-stats" class="chart-container">
+                        <apx-chart  [series]="chartOptions.series" [chart]="chartOptions.chart"
+                        [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions"
+                        [responsive]="chartOptions.responsive" [xaxis]="chartOptions.xaxis"
+                        [legend]="chartOptions.legend" [fill]="chartOptions.fill"[colors]="chartOptions.colors"></apx-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-body !p-0">
+                <div class="p-6 pb-2">
+                    <p class="text-[.9375rem] font-semibold">Tasks Statistics <span class="text-muted font-normal">(Last 6 months) :</span></p>
+                    <div id="task-list-stats" class="chart-container">
+                        <apx-chart  [series]="chartOptions.series" [chart]="chartOptions.chart"
+                        [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions"
+                        [responsive]="chartOptions.responsive" [xaxis]="chartOptions.xaxis"
+                        [legend]="chartOptions.legend" [fill]="chartOptions.fill"[colors]="chartOptions.colors"></apx-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-body !p-0">
+                <div class="p-6 pb-2">
+                    <p class="text-[.9375rem] font-semibold">Tasks Statistics <span class="text-muted font-normal">(Last 6 months) :</span></p>
+                    <div id="task-list-stats" class="chart-container">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="xl:col-span-9 lg:col-span-12 col-span-12">
+        <div class="box">
+            <div class="box-header justify-between">
+                <div class="box-title">
+                    Survey Calculation
+                </div>
+                <div class="me-3">
+                    <input class="form-control form-control-sm" type="text" placeholder="Search Here" [(ngModel)]="searchTerm" (input)="filterData()" aria-label=".form-control-sm example">
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="overflow-x-auto">
+                    <div class="max-h-[800px] overflow-y-auto">
+                    <table class="table whitespace-nowrap ti-striped-table table-hover min-w-full ti-custom-table-hover">
+                        <thead class="bg-success sticky top-0">
+                            <tr>
+                                <th scope="col" class="text-center">Station</th>
+                                <th scope="col" class="text-center">Depth</th>
+                                <th scope="col" class="text-center">Inc</th>
+                                <th scope="col" class="text-center">Aimuth</th>
+                                <th scope="col" class="text-center">TVD</th>
+                                <th scope="col" class="text-center">Vertical <br>Section</th>
+                                <th scope="col" class="text-center">+N/-S</th>
+                                <th scope="col" class="text-center">+E/-W</th>
+                                <th scope="col" class="text-center">closure <br>Distance</th>
+                                <th scope="col" class="text-center">closure <br>Direction</th>
+                                <th scope="col" class="text-center">CL</th>
+                                <th scope="col" class="text-center">Dog Leg</th>
+                                <th scope="col" class="text-center">Ratio <br> Factor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="filteredData.length === 0">
+                                <td colspan="13" class="text-center">No survey station is available</td>
+                              </tr>
+                              <tr *ngFor="let data of filteredData" class="border-b border-defaultborder cursor-pointer">
+                                <td class="text-center">{{ data.station }}</td>
+                                <td class="text-center">{{ data.depth }}</td>
+                                <td class="text-center">{{ data.inc }}</td>
+                                <td class="text-center">{{ data.azimuth }}</td>
+                                <td class="text-center">{{ data.tvd }}</td>
+                                <td class="text-center">{{ data.verticalSection }}</td>
+                                <td class="text-center">{{ data.n_s }}</td>
+                                <td class="text-center">{{ data.e_w }}</td>
+                                <td class="text-center">{{ data.closureDistance }}</td>
+                                <td class="text-center">{{ data.closureDirection }}</td>
+                                <td class="text-center">{{ data.cl }}</td>
+                                <td class="text-center">{{ data.dogLeg }}</td>
+                                <td class="text-center">{{ data.ratioFactor }}</td>
+                              </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
